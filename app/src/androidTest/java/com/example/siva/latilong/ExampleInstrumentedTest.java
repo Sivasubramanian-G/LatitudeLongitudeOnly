@@ -1,4 +1,4 @@
-package com.example.siva.latlong;
+package com.example.siva.latilong;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -17,10 +17,10 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
     @Test
-    public void useAppContext() throws Exception {
+    public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.siva.latlong", appContext.getPackageName());
+        assertEquals("com.example.siva.latilong", appContext.getPackageName());
     }
 }

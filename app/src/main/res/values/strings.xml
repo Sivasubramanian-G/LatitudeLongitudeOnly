@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">latlong</string>
+    <string name="app_name">latilong</string>
     <string name="button">Button</string>
+    <string name="fetch_location">Fetch Location</string>
 </resources>

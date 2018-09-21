@@ -1,24 +1,20 @@
-package com.example.siva.latlong;
+package com.example.siva.latilong;
 
-import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-
-/**
- * Created by user on 18/9/18.
- */
+import android.util.Log;
 
 public class AppLocationService extends Service implements LocationListener {
 
+    MainActivity ma;
     protected LocationManager locationManager;
     Location location;
     private static final long MIN_DISTANCE_FOR_UPDATE = 10;
@@ -28,14 +24,15 @@ public class AppLocationService extends Service implements LocationListener {
         locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
     }
 
+    @SuppressLint("MissingPermission")
     public Location getLocation(String provider) {
         if (locationManager.isProviderEnabled(provider)) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return null;
-            }
+
+            Log.d("msgas","before check permission in app");
             locationManager.requestLocationUpdates(provider, MIN_TIME_FOR_UPDATE
                     , MIN_DISTANCE_FOR_UPDATE, this);
             if(locationManager!=null){
+                Log.d("msgas1","locationManager!=null");
                 location=locationManager.getLastKnownLocation(provider);
                 return location;
             }
